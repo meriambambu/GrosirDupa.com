@@ -10,6 +10,71 @@
 	<meta name="generator" content={Astro.generator} />
 	<title>GrosirDupa.com - Pusat Grosir Perlengkapan Sembahyang</title>
 	<meta name="description" content="Pusat grosir dupa, lilin, kertas sembahyang, lampu altar, rupang/patung dewa dan perlengkapan sembahyang lainnya dengan harga terbaik." />
+	
+	<!-- Structured Data / Schema.org untuk SEO -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Store",
+			"name": "GrosirDupa.com",
+			"description": "Pusat grosir dupa, lilin, kertas sembahyang, lampu altar, rupang/patung dewa dan perlengkapan sembahyang lainnya dengan harga terbaik.",
+			"url": "https://grosirdupa.com",
+			"telephone": "+6282223399668",
+			"email": "inquiry@grosirdupa.com",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Ruko Taman Palem Lestari Blok C5/1A",
+				"addressLocality": "Cengkareng Barat",
+				"addressRegion": "Jakarta",
+				"postalCode": "",
+				"addressCountry": "ID"
+			},
+			"openingHours": "Mo-Sa 08:00-17:00",
+			"priceRange": "$$"
+		}
+	</script>
+	
+	<!-- FAQ Schema.org -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+				{
+					"@type": "Question",
+					"name": "Bagaimana cara memesan produk di GrosirDupa.com?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Untuk memesan produk, Anda dapat memilih produk yang diinginkan, lalu menghubungi kami melalui WhatsApp di 082223399668. Setelah konfirmasi jumlah dan alamat pengiriman, Anda dapat melakukan pembayaran dan produk akan dikirim ke alamat Anda."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Apakah ada minimum pemesanan?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Ya, minimum pemesanan adalah 1 dus atau 1/2 dus tergantung jenis produk. Informasi detail tentang isi per dus tersedia di halaman produk."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Apakah GrosirDupa.com melayani pengiriman ke seluruh Indonesia?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Ya, kami melayani pengiriman ke seluruh Indonesia menggunakan jasa ekspedisi terpercaya."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Berapa lama waktu pengiriman?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Waktu pengiriman bervariasi tergantung lokasi, biasanya 1-7 hari kerja untuk wilayah Jabodetabek dan 3-14 hari untuk luar Jabodetabek."
+					}
+				}
+			]
+		}
+	</script>
 </head>
 <body>
 	<header>
@@ -116,6 +181,50 @@
 			</div>
 		</section>
 
+		<section id="faq" class="section bg-light">
+			<div class="container">
+				<h2 class="section-title">Pertanyaan Umum</h2>
+				<div class="faq-container">
+					<div class="faq-item">
+						<div class="faq-question">
+							<h3>Bagaimana cara memesan produk di GrosirDupa.com?</h3>
+							<span class="faq-toggle">+</span>
+						</div>
+						<div class="faq-answer">
+							<p>Untuk memesan produk, Anda dapat memilih produk yang diinginkan, lalu menghubungi kami melalui WhatsApp di 082223399668. Setelah konfirmasi jumlah dan alamat pengiriman, Anda dapat melakukan pembayaran dan produk akan dikirim ke alamat Anda.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<div class="faq-question">
+							<h3>Apakah ada minimum pemesanan?</h3>
+							<span class="faq-toggle">+</span>
+						</div>
+						<div class="faq-answer">
+							<p>Ya, minimum pemesanan adalah 1 dus atau 1/2 dus tergantung jenis produk. Informasi detail tentang isi per dus tersedia di halaman produk.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<div class="faq-question">
+							<h3>Apakah GrosirDupa.com melayani pengiriman ke seluruh Indonesia?</h3>
+							<span class="faq-toggle">+</span>
+						</div>
+						<div class="faq-answer">
+							<p>Ya, kami melayani pengiriman ke seluruh Indonesia menggunakan jasa ekspedisi terpercaya.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<div class="faq-question">
+							<h3>Berapa lama waktu pengiriman?</h3>
+							<span class="faq-toggle">+</span>
+						</div>
+						<div class="faq-answer">
+							<p>Waktu pengiriman bervariasi tergantung lokasi, biasanya 1-7 hari kerja untuk wilayah Jabodetabek dan 3-14 hari untuk luar Jabodetabek.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<section id="kontak" class="section bg-accent">
 			<div class="container">
 				<h2 class="section-title light">Hubungi Kami</h2>
@@ -124,15 +233,15 @@
 						<p>Untuk pemesanan dan informasi lebih lanjut, silakan hubungi kami melalui:</p>
 						<div class="kontak-item">
 							<span class="kontak-icon">📱</span>
-							<span>WhatsApp: 08123456789</span>
+							<span>WhatsApp: 082223399668</span>
 						</div>
 						<div class="kontak-item">
 							<span class="kontak-icon">📧</span>
-							<span>Email: info@grosirdupa.com</span>
+							<span>Email: inquiry@grosirdupa.com</span>
 						</div>
 						<div class="kontak-item">
 							<span class="kontak-icon">🏠</span>
-							<span>Alamat: Jl. Contoh No. 123, Jakarta</span>
+							<span>Alamat: Ruko Taman Palem Lestari Blok C5/1A, Cengkareng Barat, Jakarta</span>
 						</div>
 					</div>
 					<div class="kontak-cta">
@@ -144,7 +253,7 @@
 							<li>Lakukan pembayaran</li>
 							<li>Produk dikirim ke alamat Anda</li>
 						</ol>
-						<a href="https://wa.me/628123456789" class="btn primary large" target="_blank">Chat WhatsApp</a>
+						<a href="https://wa.me/6282223399668" class="btn primary large" target="_blank">Chat WhatsApp</a>
 					</div>
 				</div>
 			</div>
@@ -165,14 +274,15 @@
 						<li><a href="#kategori">Kategori</a></li>
 						<li><a href="#produk-unggulan">Produk Unggulan</a></li>
 						<li><a href="#tentang-kami">Tentang Kami</a></li>
+						<li><a href="#faq">FAQ</a></li>
 						<li><a href="#kontak">Kontak</a></li>
 					</ul>
 				</div>
 				<div class="footer-contact">
 					<h3>Kontak</h3>
-					<p>WhatsApp: 08123456789</p>
-					<p>Email: info@grosirdupa.com</p>
-					<p>Alamat: Jl. Contoh No. 123, Jakarta</p>
+					<p>WhatsApp: 082223399668</p>
+					<p>Email: inquiry@grosirdupa.com</p>
+					<p>Alamat: Ruko Taman Palem Lestari Blok C5/1A, Cengkareng Barat, Jakarta</p>
 				</div>
 			</div>
 			<div class="footer-bottom">
@@ -480,6 +590,53 @@
 			border-radius: 8px;
 		}
 
+		/* FAQ Section */
+		.faq-container {
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.faq-item {
+			background-color: white;
+			border-radius: 8px;
+			margin-bottom: 20px;
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+		}
+
+		.faq-question {
+			padding: 20px;
+			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.faq-question h3 {
+			font-size: 1.1rem;
+			color: var(--color-primary);
+			margin: 0;
+		}
+
+		.faq-toggle {
+			font-size: 1.5rem;
+			color: var(--color-secondary);
+			font-weight: bold;
+		}
+
+		.faq-answer {
+			padding: 0 20px 20px;
+			display: none;
+		}
+
+		.faq-item.active .faq-answer {
+			display: block;
+		}
+
+		.faq-item.active .faq-toggle {
+			content: "-";
+		}
+
 		/* Kontak Section */
 		.kontak-content {
 			display: grid;
@@ -609,5 +766,31 @@
 			}
 		}
 	</style>
+
+	<script>
+		// Script untuk FAQ toggle
+		document.addEventListener('DOMContentLoaded', () => {
+			const faqItems = document.querySelectorAll('.faq-item');
+			
+			faqItems.forEach(item => {
+				const question = item.querySelector('.faq-question');
+				const toggle = item.querySelector('.faq-toggle');
+				
+				question.addEventListener('click', () => {
+					// Close all other items
+					faqItems.forEach(otherItem => {
+						if (otherItem !== item && otherItem.classList.contains('active')) {
+							otherItem.classList.remove('active');
+							otherItem.querySelector('.faq-toggle').textContent = '+';
+						}
+					});
+					
+					// Toggle current item
+					item.classList.toggle('active');
+					toggle.textContent = item.classList.contains('active') ? '-' : '+';
+				});
+			});
+		});
+	</script>
 </body>
 </html>
