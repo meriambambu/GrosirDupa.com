@@ -27,5 +27,5 @@ jobs:
             # Pastikan direktori tujuan sudah ada di server
             # Contoh: Menyalin semua file dari repo ke /var/www/grosirdupa.com/
             # Sesuaikan 'source' jika hasil build SSG ada di folder lain (misal 'dist/' atau 'public/')
-            rsync -avz --delete ./ /var/www/grosirdupa.com/html
+            rsync -avz --delete dist/ /var/www/grosirdupa.com/html
             echo "Deployment successful!"
