@@ -3,7 +3,7 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main  # Ganti jika kamu pakai branch lain
+      - main
 
 jobs:
   deploy:
@@ -27,7 +27,7 @@ jobs:
       - name: Debug: List build output
         run: |
           echo "List isi dist:"
-          ls -lah ${{ github.workspace }}/GrosirDupa.com/dist/
+          ls -lah ./dist/
 
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@master
@@ -37,7 +37,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Mulai deploy ke server..."
-            rsync -avz --delete ${{ github.workspace }}/GrosirDupa.com/dist/ /var/www/grosirdupa.com/html/
+            rsync -avz --delete ./dist/ /var/www/grosirdupa.com/html/
             sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
             sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
             sudo find /var/www/grosirdupa.com/html/ -type f -exec chmod 644 {} \;
