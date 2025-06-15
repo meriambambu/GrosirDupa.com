@@ -25,11 +25,20 @@ jobs:
         run: npm run build
 
       - name: Debug: List build output
-        run: ls -lah ${{ github.workspace }}/GrosirDupa.com/dist/
+        run: |
+          echo "List isi dist:"
+          ls -lah ${{ github.workspace }}/GrosirDupa.com/dist/
 
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "Mulai deploy ke server..."
+            rsync -avz --delete ${{ github.workspace }}/GrosirDupa.com/dist/ /var/www/grosirdupa.com/html/
+            sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
+            sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
+            sudo find /var/www/grosirdupa.com/html/ -type f -exec chmod 644 {} \;
+            echo "Deploy selesai!"
