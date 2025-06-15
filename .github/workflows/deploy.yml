@@ -12,7 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # --- PASTIKAN BAGIAN INI TIDAK DIKOMENTARI DAN ADA ---
       - name: Build static site
         run: |
           npm install
@@ -24,16 +23,13 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # --- PERUBAHAN DI SINI: Gunakan 'source' dan 'target' untuk rsync ---
+          source: "dist/" # Ini adalah folder output dari build Astro
+          target: "/var/www/grosirdupa.com/html/" # Ini adalah direktori tujuan di server
+          rm: true # Ini setara dengan --delete pada rsync
+
+          # --- Bagian 'script' sekarang hanya untuk perintah setelah rsync ---
           script: |
-            # Pastikan direktori tujuan sudah ada di server
-            # (Opsional: Anda bisa menambahkan mkdir -p jika direktori mungkin belum ada)
-            # sudo mkdir -p /var/www/grosirdupa.com/html
-
-            # Menyalin hasil build dari folder 'dist/' ke server
-            # --delete akan menghapus file di tujuan yang tidak ada di sumber
-            rsync -avz --delete dist/ /var/www/grosirdupa.com/html/
-
-            # --- PASTIKAN BAGIAN INI ADA UNTUK MENGATUR IZIN ---
             # Setel izin file dan direktori agar Nginx bisa membaca
             # Ganti www-data:www-data jika user Nginx Anda berbeda (misal: nginx:nginx)
             sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
