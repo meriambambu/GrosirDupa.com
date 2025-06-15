@@ -3,42 +3,35 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main # Atau branch utama Anda jika bukan 'main'
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Build static site
-        run: |
-          npm install
-          npm run build
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-      - name: Deploy to server
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro site
+        run: npm run build
+
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # --- KEMBALIKAN RSYNC KE DALAM 'script' DAN PASTIKAN WORKING DIRECTORY ---
           script: |
-            # Pindah ke direktori kerja GitHub Actions tempat repositori di-checkout
-            # dan folder 'dist/' berada.
-            cd ${{ github.workspace }}
-
-            # Opsional: Periksa isi folder 'dist/' untuk debugging
-            echo "Contents of dist/ before rsync:"
-            ls -la dist/
-
-            # Lakukan rsync
-            rsync -avz --delete dist/ /var/www/grosirdupa.com/html/
-
-            # Setel izin file dan direktori agar Nginx bisa membaca
+            rsync -avz --delete ${{ github.workspace }}/dist/ /var/www/grosirdupa.com/html/
             sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
             sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
             sudo find /var/www/grosirdupa.com/html/ -type f -exec chmod 644 {} \;
-
-            echo "Deployment successful!"
