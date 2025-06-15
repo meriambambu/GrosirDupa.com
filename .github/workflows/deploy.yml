@@ -22,23 +22,36 @@ jobs:
         run: npm install
 
       - name: Build Astro site
-        run: npm npm run build
+        run: npm run build
 
       - name: 'Debug: List built files'
         run: |
           echo "📁 Contents of ./dist/"
           ls -lah ./dist/
 
-      # --- LANGKAH BARU: Deploy files menggunakan burnett01/rsync-deploy ---
-      - name: Deploy files with rsync
-        uses: burnett01/rsync-deploy@5.0.0 # Menggunakan action rsync yang berbeda
-        with:
-          ssh_host: ${{ secrets.SSH_HOST }}
-          ssh_user: ${{ secrets.SSH_USER }}
-          ssh_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/" # Path sumber di runner
-          target: "/var/www/grosirdupa.com/html/" # Path tujuan di server
-          args: "--delete" # Argumen rsync
+      # --- LANGKAH BARU: Deploy files dengan rsync manual ---
+      - name: Deploy files with rsync (manual)
+        run: |
+          echo "🚀 Memulai rsync manual..."
+          # Pastikan rsync dan openssh-client terinstal di runner
+          sudo apt-get update
+          sudo apt-get install -y rsync openssh-client
+
+          # Konfigurasi SSH key di runner
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          # Tambahkan host ke known_hosts untuk menghindari prompt konfirmasi
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+          # Jalankan perintah rsync
+          # -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no" : Menggunakan SSH key dan menonaktifkan pemeriksaan host key
+          # dist/ : Sumber (relatif terhadap GITHUB_WORKSPACE)
+          # ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/grosirdupa.com/html/ : Tujuan di server remote
+          rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no" \
+            dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/grosirdupa.com/html/
+
+          echo "✅ Rsync manual selesai!"
 
       # --- LANGKAH TERPISAH: Mengatur izin menggunakan appleboy/ssh-action ---
       - name: Set permissions on VPS
