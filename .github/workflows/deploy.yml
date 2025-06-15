@@ -24,7 +24,7 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
-      - name: Debug: List built files
+      - name: 'Debug: List built files' # <--- PERBAIKAN DI SINI
         run: |
           echo "📁 Contents of ./dist/"
           ls -lah ./dist/
@@ -37,6 +37,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "🚀 Mulai deploy ke VPS..."
+            # Menggunakan $GITHUB_WORKSPACE untuk memastikan path absolut yang benar
             rsync -avz --delete $GITHUB_WORKSPACE/dist/ /var/www/grosirdupa.com/html/
             sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
             sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
