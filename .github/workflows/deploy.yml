@@ -23,15 +23,20 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # --- PERUBAHAN DI SINI: Gunakan 'source' dan 'target' untuk rsync ---
-          source: "dist/" # Ini adalah folder output dari build Astro
-          target: "/var/www/grosirdupa.com/html/" # Ini adalah direktori tujuan di server
-          rm: true # Ini setara dengan --delete pada rsync
-
-          # --- Bagian 'script' sekarang hanya untuk perintah setelah rsync ---
+          # --- KEMBALIKAN RSYNC KE DALAM 'script' DAN PASTIKAN WORKING DIRECTORY ---
           script: |
+            # Pindah ke direktori kerja GitHub Actions tempat repositori di-checkout
+            # dan folder 'dist/' berada.
+            cd ${{ github.workspace }}
+
+            # Opsional: Periksa isi folder 'dist/' untuk debugging
+            echo "Contents of dist/ before rsync:"
+            ls -la dist/
+
+            # Lakukan rsync
+            rsync -avz --delete dist/ /var/www/grosirdupa.com/html/
+
             # Setel izin file dan direktori agar Nginx bisa membaca
-            # Ganti www-data:www-data jika user Nginx Anda berbeda (misal: nginx:nginx)
             sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
             sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
             sudo find /var/www/grosirdupa.com/html/ -type f -exec chmod 644 {} \;
