@@ -12,9 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Tambahkan langkah build di sini jika menggunakan Static Site Generator (SSG)
-      # - name: Build static site
-      #   run: npm install && npm run build # Contoh untuk Node.js/SSG
+      # --- PERBAIKAN 1: AKTIFKAN LANGKAH BUILD UNTUK ASTRO ---
+      - name: Build static site
+        run: |
+          npm install
+          npm run build
 
       - name: Deploy to server
         uses: appleboy/ssh-action@master
@@ -23,9 +25,19 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Ganti /var/www/html dengan path direktori website Anda di server
             # Pastikan direktori tujuan sudah ada di server
-            # Contoh: Menyalin semua file dari repo ke /var/www/grosirdupa.com/
-            # Sesuaikan 'source' jika hasil build SSG ada di folder lain (misal 'dist/' atau 'public/')
-            rsync -avz --delete dist/ /var/www/grosirdupa.com/html
+            # (Opsional: Anda bisa menambahkan mkdir -p jika direktori mungkin belum ada)
+            # sudo mkdir -p /var/www/grosirdupa.com/html
+
+            # Menyalin hasil build dari folder 'dist/' ke server
+            # --delete akan menghapus file di tujuan yang tidak ada di sumber
+            rsync -avz --delete dist/ /var/www/grosirdupa.com/html/
+
+            # --- PERBAIKAN 2: TAMBAHKAN PERINTAH CHOWN DAN CHMOD ---
+            # Setel izin file dan direktori agar Nginx bisa membaca
+            # Ganti www-data:www-data jika user Nginx Anda berbeda (misal: nginx:nginx)
+            sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
+            sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
+            sudo find /var/www/grosirdupa.com/html/ -type f -exec chmod 644 {} \;
+
             echo "Deployment successful!"
