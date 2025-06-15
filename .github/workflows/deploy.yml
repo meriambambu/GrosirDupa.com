@@ -1,4 +1,4 @@
-name: Deploy Website
+name: Test Workflow
 
 on:
   push:
@@ -6,39 +6,12 @@ on:
       - main
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Astro site
-        run: npm run build
-
-      - name: Debug: List build output
-        run: |
-          echo "List isi dist:"
-          ls -lah ./dist/
-
-      - name: Deploy to VPS via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            echo "Mulai deploy ke server..."
-            rsync -avz --delete ./dist/ /var/www/grosirdupa.com/html/
-            sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
-            sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
-            sudo find /var/www/grosirdupa.com/html/ -type f -exec chmod 644 {} \;
-            echo "Deploy selesai!"
+      - name: Hello World
+        run: echo "✅ Workflow berhasil jalan"
