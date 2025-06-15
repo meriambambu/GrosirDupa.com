@@ -1,4 +1,4 @@
-name: Test Workflow
+name: Test Astro Build
 
 on:
   push:
@@ -6,12 +6,23 @@ on:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Hello World
-        run: echo "✅ Workflow berhasil jalan"
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: List dist folder
+        run: ls -lah ./dist/
