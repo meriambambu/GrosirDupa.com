@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # --- PERBAIKAN 1: AKTIFKAN LANGKAH BUILD UNTUK ASTRO ---
+      # --- PASTIKAN BAGIAN INI TIDAK DIKOMENTARI DAN ADA ---
       - name: Build static site
         run: |
           npm install
@@ -33,7 +33,7 @@ jobs:
             # --delete akan menghapus file di tujuan yang tidak ada di sumber
             rsync -avz --delete dist/ /var/www/grosirdupa.com/html/
 
-            # --- PERBAIKAN 2: TAMBAHKAN PERINTAH CHOWN DAN CHMOD ---
+            # --- PASTIKAN BAGIAN INI ADA UNTUK MENGATUR IZIN ---
             # Setel izin file dan direktori agar Nginx bisa membaca
             # Ganti www-data:www-data jika user Nginx Anda berbeda (misal: nginx:nginx)
             sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
