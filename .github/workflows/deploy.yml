@@ -1,5 +1,44 @@
-- name: Print current working directory
-  run: pwd
+name: Deploy Astro Website
 
-- name: Print full contents of workspace
-  run: ls -Rlah
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro site
+        run: npm run build
+
+      - name: Print current working directory
+        run: pwd
+
+      - name: Print full contents of workspace
+        run: ls -Rlah
+
+      - name: Deploy via SSH with rsync
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "🚀 Deploying to VPS..."
+            rsync -avz --delete dist/ /var/www/grosirdupa.com/html/
+            sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
+            sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
+            sudo find /var/www/grosirdupa
