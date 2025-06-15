@@ -24,22 +24,30 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
-      - name: 'Debug: List built files' # <--- PERBAIKAN DI SINI
+      - name: 'Debug: List built files'
         run: |
           echo "📁 Contents of ./dist/"
           ls -lah ./dist/
 
-      - name: Deploy to VPS via SSH
-        uses: appleboy/ssh-action@master
+      - name: Deploy files with rsync # <--- LANGKAH BARU UNTUK RSYNC
+        uses: appleboy/ssh-action@v0.1.10 # Gunakan versi spesifik
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "dist/" # Sumber di runner (relatif terhadap GITHUB_WORKSPACE)
+          target: "/var/www/grosirdupa.com/html/" # Tujuan di server
+          rm: true # Setara dengan --delete pada rsync
+
+      - name: Set permissions on VPS # <--- LANGKAH TERPISAH UNTUK IZIN
+        uses: appleboy/ssh-action@v0.1.10 # Gunakan versi spesifik
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "🚀 Mulai deploy ke VPS..."
-            # Menggunakan $GITHUB_WORKSPACE untuk memastikan path absolut yang benar
-            rsync -avz --delete $GITHUB_WORKSPACE/dist/ /var/www/grosirdupa.com/html/
+            echo "🚀 Mengatur izin file di VPS..."
             sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
             sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
             sudo find /var/www/grosirdupa.com/html/ -type f -exec chmod 644 {} \;
-            echo "✅ Deploy selesai!"
+            echo "✅ Izin selesai diatur!"
