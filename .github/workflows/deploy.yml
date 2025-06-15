@@ -3,14 +3,14 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main
+      - main  # Ganti jika kamu pakai branch lain
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout source code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -24,14 +24,12 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
-      - name: Deploy via SSH
+      - name: Debug: List build output
+        run: ls -lah ${{ github.workspace }}/GrosirDupa.com/dist/
+
+      - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            rsync -avz --delete ${{ github.workspace }}/dist/ /var/www/grosirdupa.com/html/
-            sudo chown -R www-data:www-data /var/www/grosirdupa.com/html/
-            sudo find /var/www/grosirdupa.com/html/ -type d -exec chmod 755 {} \;
-            sudo find /var/www/grosirdupa.com/html/ -type f -exec chmod 644 {} \;
+          key
