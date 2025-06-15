@@ -22,26 +22,27 @@ jobs:
         run: npm install
 
       - name: Build Astro site
-        run: npm run build
+        run: npm npm run build
 
       - name: 'Debug: List built files'
         run: |
           echo "📁 Contents of ./dist/"
           ls -lah ./dist/
 
-      # --- PERHATIKAN BARIS INI: uses: appleboy/rsync-action@master ---
+      # --- LANGKAH BARU: Deploy files menggunakan burnett01/rsync-deploy ---
       - name: Deploy files with rsync
-        uses: appleboy/rsync-action@master # <--- PASTIKAN INI @master
+        uses: burnett01/rsync-deploy@5.0.0 # Menggunakan action rsync yang berbeda
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/"
-          target: "/var/www/grosirdupa.com/html/"
-          args: "--delete"
+          ssh_host: ${{ secrets.SSH_HOST }}
+          ssh_user: ${{ secrets.SSH_USER }}
+          ssh_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "dist/" # Path sumber di runner
+          target: "/var/www/grosirdupa.com/html/" # Path tujuan di server
+          args: "--delete" # Argumen rsync
 
+      # --- LANGKAH TERPISAH: Mengatur izin menggunakan appleboy/ssh-action ---
       - name: Set permissions on VPS
-        uses: appleboy/ssh-action@v0.1.10 # Ini tetap v0.1.10
+        uses: appleboy/ssh-action@v0.1.10 # Tetap menggunakan ssh-action untuk eksekusi script
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
