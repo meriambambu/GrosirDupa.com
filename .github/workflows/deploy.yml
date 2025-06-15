@@ -29,20 +29,19 @@ jobs:
           echo "📁 Contents of ./dist/"
           ls -lah ./dist/
 
-      # --- LANGKAH BARU: Deploy files menggunakan appleboy/rsync-action ---
+      # --- PERHATIKAN BARIS INI: uses: appleboy/rsync-action@master ---
       - name: Deploy files with rsync
-        uses: appleboy/rsync-action@v0.1.10 # Menggunakan rsync-action secara spesifik
+        uses: appleboy/rsync-action@master # <--- PASTIKAN INI @master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/" # Path sumber di runner (relatif terhadap GITHUB_WORKSPACE)
-          target: "/var/www/grosirdupa.com/html/" # Path tujuan di server remote
-          args: "--delete" # Argumen rsync, setara dengan rm: true
+          source: "dist/"
+          target: "/var/www/grosirdupa.com/html/"
+          args: "--delete"
 
-      # --- LANGKAH TERPISAH: Mengatur izin menggunakan appleboy/ssh-action ---
       - name: Set permissions on VPS
-        uses: appleboy/ssh-action@v0.1.10 # Tetap menggunakan ssh-action untuk eksekusi script
+        uses: appleboy/ssh-action@v0.1.10 # Ini tetap v0.1.10
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
