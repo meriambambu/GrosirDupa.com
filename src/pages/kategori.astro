@@ -1,0 +1,501 @@
+---
+// src/pages/kategori.astro
+---
+
+<html lang="id">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="generator" content={Astro.generator} />
+	<title>Kategori Produk - GrosirDupa.com</title>
+	<meta name="description" content="Jelajahi berbagai kategori produk perlengkapan sembahyang terlengkap di GrosirDupa.com: dupa, lilin, kertas sembahyang, lampu altar, rupang/patung dewa, dan lainnya." />
+</head>
+<body>
+	<header>
+		<div class="logo-container">
+			<h1>GrosirDupa<span>.com</span></h1>
+		</div>
+		<nav class="main-nav">
+			<ul class="nav-links">
+				<li><a href="/">Beranda</a></li>
+				<li><a href="/kategori">Kategori</a></li>
+				<li><a href="/#produk-unggulan">Produk Unggulan</a></li>
+				<li><a href="/#tentang-kami">Tentang Kami</a></li>
+				<li><a href="/#faq">FAQ</a></li>
+				<li><a href="/#kontak" class="kontak-btn">Hubungi Kami</a></li>
+			</ul>
+			<div class="hamburger-menu">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<section id="kategori-page" class="section">
+			<div class="container">
+				<h2 class="section-title">Semua Kategori Produk</h2>
+				<div class="kategori-grid">
+					<a href="/kategori/dupa" class="kategori-item">
+						<div class="kategori-icon">🕯️</div>
+						<h3>Dupa</h3>
+						<p>Berbagai jenis dupa berkualitas tinggi untuk sembahyang.</p>
+					</a>
+					<a href="/kategori/lilin" class="kategori-item">
+						<div class="kategori-icon">🔥</div>
+						<h3>Lilin</h3>
+						<p>Lilin sembahyang berbagai ukuran dan warna.</p>
+					</a>
+					<a href="/kategori/kertas-sembahyang" class="kategori-item">
+						<div class="kategori-icon">📜</div>
+						<h3>Kertas Sembahyang</h3>
+						<p>Kertas sembahyang dengan beragam motif dan fungsi.</p>
+					</a>
+					<a href="/kategori/lampu-altar" class="kategori-item">
+						<div class="kategori-icon">💡</div>
+						<h3>Lampu Altar</h3>
+						<p>Lampu altar tradisional dan modern untuk penerangan.</p>
+					</a>
+					<a href="/kategori/rupang-patung" class="kategori-item">
+						<div class="kategori-icon">🏯</div>
+						<h3>Rupang/Patung</h3>
+						<p>Patung dewa dan rupang berbagai ukuran dan bahan.</p>
+					</a>
+					<a href="/kategori/minyak-sembahyang" class="kategori-item">
+						<div class="kategori-icon">🛢️</div>
+						<h3>Minyak Sembahyang</h3>
+						<p>Minyak sembahyang berkualitas premium untuk ritual.</p>
+					</a>
+					<a href="/kategori/dupa-lingkar-tempat-bakar" class="kategori-item">
+						<div class="kategori-icon">🔥</div>
+						<h3>Dupa Lingkar & Tempat Bakar</h3>
+						<p>Dupa lingkar dan tempat bakar dupa yang aman.</p>
+					</a>
+					<a href="/kategori/cangkir-piring-buah" class="kategori-item">
+						<div class="kategori-icon">🍎</div>
+						<h3>Cangkir & Piring Buah</h3>
+						<p>Cangkir dan piring buah untuk persembahan ritual.</p>
+					</a>
+					<a href="/kategori/perlengkapan-lainnya" class="kategori-item">
+						<div class="kategori-icon">🧧</div>
+						<h3>Perlengkapan Lainnya</h3>
+						<p>Berbagai perlengkapan sembahyang pelengkap lainnya.</p>
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<div class="footer-content">
+				<div class="footer-logo">
+					<h2>GrosirDupa<span>.com</span></h2>
+					<p>Pusat Grosir Perlengkapan Sembahyang</p>
+				</div>
+				<div class="footer-links">
+					<h3>Tautan</h3>
+					<ul>
+						<li><a href="/">Beranda</a></li>
+						<li><a href="/kategori">Kategori</a></li>
+						<li><a href="/#produk-unggulan">Produk Unggulan</a></li>
+						<li><a href="/#tentang-kami">Tentang Kami</a></li>
+						<li><a href="/#faq">FAQ</a></li>
+						<li><a href="/#kontak">Kontak</a></li>
+					</ul>
+				</div>
+				<div class="footer-contact">
+					<h3>Kontak</h3>
+					<p>WhatsApp: 0822-2339-9668</p>
+					<p>Email: inquiry@grosirdupa.com</p>
+					<p>Alamat: Ruko Taman Palem Lestari Blok C5/1A, Cengkareng Barat, Jakarta</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; 2025 GrosirDupa.com. Hak Cipta Dilindungi.</p>
+			</div>
+		</div>
+	</footer>
+
+	<style>
+		/* Variabel warna - Tema Tionghoa Profesional */
+		:root {
+			--color-primary: #8B0000; /* Merah tua elegan (Dark Red) */
+			--color-secondary: #DAA520; /* Emas tua (Goldenrod) */
+			--color-accent: #2F4F2F; /* Hijau jade gelap (Dark Slate Gray) */
+			--color-dark: #1C1C1C; /* Hitam lembut */
+			--color-light: #FDF5E6; /* Krem lembut (Old Lace) */
+			--color-gray: #F5F5DC; /* Beige */
+			--color-text: #2F2F2F; /* Abu-abu gelap untuk teks */
+			--color-text-light: #FFFFFF;
+			--color-border: #D4AF37; /* Emas untuk border */
+			--color-shadow: rgba(139, 0, 0, 0.1); /* Shadow merah lembut */
+			--color-bright-red: #DC143C; /* Merah cerah untuk section kontak */
+			--color-gold: #FFD700; /* Kuning emas untuk button */
+			--font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		/* Reset dan Base */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: var(--font-main);
+			color: var(--color-text);
+			line-height: 1.6;
+			background-color: var(--color-light);
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		.container {
+			width: 90%;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.section {
+			padding: 80px 0;
+		}
+
+		.section-title {
+			font-size: 2.5rem;
+			text-align: center;
+			margin-bottom: 50px;
+			color: var(--color-primary);
+			position: relative;
+			font-weight: 700;
+		}
+
+		.section-title::after {
+			content: '';
+			display: block;
+			width: 80px;
+			height: 4px;
+			background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+			margin: 15px auto 0;
+			border-radius: 2px;
+		}
+
+		.bg-light {
+			background-color: var(--color-gray);
+		}
+
+		.bg-accent {
+			background-color: var(--color-bright-red);
+			color: var(--color-text-light);
+		}
+
+		.light {
+			color: var(--color-text-light);
+		}
+
+		.light::after {
+			background: linear-gradient(90deg, var(--color-secondary), var(--color-text-light));
+		}
+
+		/* Header */
+		header {
+			background: linear-gradient(135deg, var(--color-light), var(--color-gray));
+			box-shadow: 0 4px 20px var(--color-shadow);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 15px 5%;
+			border-bottom: 2px solid var(--color-border);
+		}
+
+		.logo-container h1 {
+			font-size: 2rem;
+			color: var(--color-primary);
+			font-weight: 700;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+		}
+
+		.logo-container span {
+			color: var(--color-secondary);
+		}
+
+		nav.main-nav {
+			display: flex;
+			align-items: center;
+		}
+
+		nav .nav-links {
+			display: flex;
+			gap: 20px;
+		}
+
+		nav a {
+			font-weight: 500;
+			transition: all 0.3s ease;
+			position: relative;
+		}
+
+		nav a:hover {
+			color: var(--color-primary);
+		}
+
+		nav a::after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 2px;
+			bottom: -5px;
+			left: 50%;
+			background-color: var(--color-secondary);
+			transition: all 0.3s ease;
+			transform: translateX(-50%);
+		}
+
+		nav a:hover::after {
+			width: 100%;
+		}
+
+		.kontak-btn {
+			background-color: var(--color-gold);
+			color: var(--color-dark);
+			padding: 10px 20px;
+			border-radius: 4px;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+		}
+
+		.kontak-btn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+			color: var(--color-dark);
+		}
+
+		.kontak-btn::after {
+			display: none;
+		}
+
+		/* Hamburger Menu */
+		.hamburger-menu {
+			display: none;
+			flex-direction: column;
+			cursor: pointer;
+			padding: 10px;
+			z-index: 1001;
+		}
+
+		.hamburger-menu .bar {
+			width: 25px;
+			height: 3px;
+			background-color: var(--color-primary);
+			margin: 4px 0;
+			transition: 0.4s;
+			border-radius: 2px;
+		}
+
+		/* Kategori Section */
+		.kategori-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 30px;
+		}
+
+		.kategori-item {
+			background-color: white;
+			border-radius: 15px;
+			padding: 30px;
+			text-align: center;
+			box-shadow: 0 8px 25px var(--color-shadow);
+			transition: all 0.3s ease;
+			border: 2px solid transparent;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.kategori-item:hover {
+			transform: translateY(-10px);
+			border-color: var(--color-border);
+			box-shadow: 0 15px 35px var(--color-shadow);
+		}
+
+		.kategori-icon {
+			font-size: 3rem;
+			margin-bottom: 15px;
+		}
+
+		.kategori-item h3 {
+			color: var(--color-primary);
+			margin-bottom: 10px;
+			font-weight: 600;
+		}
+
+		.kategori-item p {
+			color: var(--color-text);
+			font-size: 0.95rem;
+		}
+
+		/* Footer */
+		footer {
+			background-color: var(--color-dark);
+			color: white;
+			padding: 60px 0 20px;
+		}
+
+		.footer-content {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 40px;
+			margin-bottom: 40px;
+		}
+
+		.footer-logo h2 {
+			color: var(--color-primary);
+			margin-bottom: 10px;
+		}
+
+		.footer-logo span {
+			color: var(--color-secondary);
+		}
+
+		.footer-links h3,
+		.footer-contact h3 {
+			color: var(--color-secondary);
+			margin-bottom: 15px;
+			font-size: 1.2rem;
+		}
+
+		.footer-links ul li {
+			margin-bottom: 10px;
+		}
+
+		.footer-links a:hover {
+			color: var(--color-secondary);
+		}
+
+		.footer-contact p {
+			margin-bottom: 10px;
+		}
+
+		.footer-bottom {
+			text-align: center;
+			padding-top: 20px;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			header {
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 15px 5%;
+			}
+
+			nav .nav-links {
+				display: flex;
+				flex-direction: column;
+				position: fixed;
+				top: 0;
+				right: 0;
+				width: 80%;
+				max-width: 300px;
+				height: 100vh;
+				background-color: var(--color-light);
+				box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+				padding: 20px 0;
+				padding-top: 70px;
+				align-items: flex-start;
+				text-align: left;
+				transition: transform 0.3s ease-in-out;
+				transform: translateX(100%);
+				z-index: 999;
+				overflow-y: auto;
+			}
+
+			nav .nav-links.active {
+				transform: translateX(0);
+			}
+
+			nav .nav-links li {
+				margin: 10px 0;
+				width: 100%;
+				padding-left: 5%;
+			}
+
+			nav .nav-links a {
+				display: block;
+				padding: 10px 0;
+				color: var(--color-dark);
+			}
+
+			nav .nav-links a.kontak-btn {
+				margin: 10px 5%;
+				width: fit-content;
+			}
+
+			.hamburger-menu {
+				display: flex;
+				z-index: 1001;
+			}
+
+			.section {
+				padding: 60px 0;
+			}
+
+			.section-title {
+				font-size: 2rem;
+			}
+
+			.kategori-grid {
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				gap: 20px;
+			}
+		}
+	</style>
+
+	<script>
+		// Script untuk Hamburger Menu
+		document.addEventListener('DOMContentLoaded', () => {
+			const hamburger = document.querySelector('.hamburger-menu');
+			const navLinks = document.querySelector('.nav-links');
+
+			if (hamburger && navLinks) {
+				hamburger.addEventListener('click', () => {
+					navLinks.classList.toggle('active');
+				});
+
+				// Close menu when a link is clicked
+				navLinks.querySelectorAll('a').forEach(link => {
+					link.addEventListener('click', () => {
+						if (navLinks.classList.contains('active')) {
+							navLinks.classList.remove('active');
+						}
+					});
+				});
+			}
+		});
+	</script>
+</body>
+</html>
+

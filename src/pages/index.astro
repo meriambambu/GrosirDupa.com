@@ -10,7 +10,7 @@
 	<meta name="generator" content={Astro.generator} />
 	<title>GrosirDupa.com - Pusat Grosir Perlengkapan Sembahyang</title>
 	<meta name="description" content="Pusat grosir dupa, lilin, kertas sembahyang, lampu altar, rupang/patung dewa dan perlengkapan sembahyang lainnya dengan harga terbaik." />
-	
+
 	<!-- Structured Data / Schema.org untuk SEO -->
 	<script type="application/ld+json">
 		{
@@ -29,11 +29,11 @@
 				"postalCode": "",
 				"addressCountry": "ID"
 			},
-			"openingHours": "Mo-Sa 08:00-17:00",
+			"openingHours": "Mo-Sa 09:00-18:00",
 			"priceRange": "$$"
 		}
 	</script>
-	
+
 	<!-- FAQ Schema.org -->
 	<script type="application/ld+json">
 		{
@@ -45,7 +45,7 @@
 					"name": "Bagaimana cara memesan produk di GrosirDupa.com?",
 					"acceptedAnswer": {
 						"@type": "Answer",
-						"text": "Untuk memesan produk, Anda dapat memilih produk yang diinginkan, lalu menghubungi kami melalui WhatsApp di 082223399668. Setelah konfirmasi jumlah dan alamat pengiriman, Anda dapat melakukan pembayaran dan produk akan dikirim ke alamat Anda."
+						"text": "Untuk memesan produk, Anda dapat memilih produk yang diinginkan, lalu menghubungi kami melalui WhatsApp di 0822-2339-9668. Setelah konfirmasi jumlah dan alamat pengiriman, Anda dapat melakukan pembayaran dan produk akan dikirim ke alamat Anda."
 					}
 				},
 				{
@@ -81,14 +81,20 @@
 		<div class="logo-container">
 			<h1>GrosirDupa<span>.com</span></h1>
 		</div>
-		<nav>
-			<ul>
+		<nav class="main-nav">
+			<ul class="nav-links">
 				<li><a href="#beranda">Beranda</a></li>
-				<li><a href="#kategori">Kategori</a></li>
+				<li><a href="/kategori">Kategori</a></li>
 				<li><a href="#produk-unggulan">Produk Unggulan</a></li>
 				<li><a href="#tentang-kami">Tentang Kami</a></li>
+				<li><a href="#faq">FAQ</a></li>
 				<li><a href="#kontak" class="kontak-btn">Hubungi Kami</a></li>
 			</ul>
+			<div class="hamburger-menu">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
 		</nav>
 	</header>
 
@@ -134,6 +140,21 @@
 						<p>Patung dewa berbagai ukuran</p>
 					</div>
 					<div class="kategori-item">
+						<div class="kategori-icon">🛢️</div>
+						<h3>Minyak Sembahyang</h3>
+						<p>Minyak sembahyang berkualitas premium</p>
+					</div>
+					<div class="kategori-item">
+						<div class="kategori-icon">🔥</div>
+						<h3>Dupa Lingkar & Tempat Bakar</h3>
+						<p>Dupa lingkar dan tempat bakar dupa</p>
+					</div>
+					<div class="kategori-item">
+						<div class="kategori-icon">🍎</div>
+						<h3>Cangkir & Piring Buah</h3>
+						<p>Cangkir dan piring buah untuk persembahan</p>
+					</div>
+					<div class="kategori-item">
 						<div class="kategori-icon">🧧</div>
 						<h3>Lainnya</h3>
 						<p>Perlengkapan sembahyang lainnya</p>
@@ -150,19 +171,19 @@
 						<div class="produk-image"></div>
 						<h3>Dupa Wangi Premium</h3>
 						<p>Dupa wangi kualitas terbaik, 1 dus isi 24 pack</p>
-						<a href="#kontak" class="btn small">Pesan Sekarang</a>
+						<a href="/produk/dupa-wangi-premium" class="btn small">Lihat Detail</a>
 					</div>
 					<div class="produk-item">
 						<div class="produk-image"></div>
 						<h3>Lilin Merah Besar</h3>
 						<p>Lilin merah ukuran besar, 1 dus isi 20 pasang</p>
-						<a href="#kontak" class="btn small">Pesan Sekarang</a>
+						<a href="/produk/lilin-merah-besar" class="btn small">Lihat Detail</a>
 					</div>
 					<div class="produk-item">
 						<div class="produk-image"></div>
 						<h3>Kertas Sembahyang Motif Naga</h3>
 						<p>Kertas sembahyang motif naga, 1 dus isi 50 pack</p>
-						<a href="#kontak" class="btn small">Pesan Sekarang</a>
+						<a href="/produk/kertas-sembahyang-naga" class="btn small">Lihat Detail</a>
 					</div>
 				</div>
 			</div>
@@ -191,7 +212,7 @@
 							<span class="faq-toggle">+</span>
 						</div>
 						<div class="faq-answer">
-							<p>Untuk memesan produk, Anda dapat memilih produk yang diinginkan, lalu menghubungi kami melalui WhatsApp di 082223399668. Setelah konfirmasi jumlah dan alamat pengiriman, Anda dapat melakukan pembayaran dan produk akan dikirim ke alamat Anda.</p>
+							<p>Untuk memesan produk, Anda dapat memilih produk yang diinginkan, lalu menghubungi kami melalui WhatsApp di 0822-2339-9668. Setelah konfirmasi jumlah dan alamat pengiriman, Anda dapat melakukan pembayaran dan produk akan dikirim ke alamat Anda.</p>
 						</div>
 					</div>
 					<div class="faq-item">
@@ -233,7 +254,7 @@
 						<p>Untuk pemesanan dan informasi lebih lanjut, silakan hubungi kami melalui:</p>
 						<div class="kontak-item">
 							<span class="kontak-icon">📱</span>
-							<span>WhatsApp: 082223399668</span>
+							<span>WhatsApp: 0822-2339-9668</span>
 						</div>
 						<div class="kontak-item">
 							<span class="kontak-icon">📧</span>
@@ -270,8 +291,8 @@
 				<div class="footer-links">
 					<h3>Tautan</h3>
 					<ul>
-						<li><a href="#beranda">Beranda</a></li>
-						<li><a href="#kategori">Kategori</a></li>
+						<li><a href="/">Beranda</a></li>
+						<li><a href="/kategori">Kategori</a></li>
 						<li><a href="#produk-unggulan">Produk Unggulan</a></li>
 						<li><a href="#tentang-kami">Tentang Kami</a></li>
 						<li><a href="#faq">FAQ</a></li>
@@ -280,7 +301,7 @@
 				</div>
 				<div class="footer-contact">
 					<h3>Kontak</h3>
-					<p>WhatsApp: 082223399668</p>
+					<p>WhatsApp: 0822-2339-9668</p>
 					<p>Email: inquiry@grosirdupa.com</p>
 					<p>Alamat: Ruko Taman Palem Lestari Blok C5/1A, Cengkareng Barat, Jakarta</p>
 				</div>
@@ -292,15 +313,20 @@
 	</footer>
 
 	<style>
-		/* Variabel warna */
+		/* Variabel warna - Tema Tionghoa Profesional */
 		:root {
-			--color-primary: #c00000; /* Merah */
-			--color-secondary: #ffd700; /* Emas */
-			--color-dark: #333333;
-			--color-light: #f9f9f9;
-			--color-gray: #e0e0e0;
-			--color-text: #333333;
-			--color-text-light: #ffffff;
+			--color-primary: #8B0000; /* Merah tua elegan (Dark Red) */
+			--color-secondary: #DAA520; /* Emas tua (Goldenrod) */
+			--color-accent: #2F4F2F; /* Hijau jade gelap (Dark Slate Gray) */
+			--color-dark: #1C1C1C; /* Hitam lembut */
+			--color-light: #FDF5E6; /* Krem lembut (Old Lace) */
+			--color-gray: #F5F5DC; /* Beige */
+			--color-text: #2F2F2F; /* Abu-abu gelap untuk teks */
+			--color-text-light: #FFFFFF;
+			--color-border: #D4AF37; /* Emas untuk border */
+			--color-shadow: rgba(139, 0, 0, 0.1); /* Shadow merah lembut */
+			--color-bright-red: #DC143C; /* Merah cerah untuk section kontak dan footer */
+			--color-gold: #FFD700; /* Kuning emas untuk button */
 			--font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		}
 
@@ -316,7 +342,7 @@
 		}
 
 		body {
-			font-family: var(--font-main );
+			font-family: var(--font-main);
 			color: var(--color-text);
 			line-height: 1.6;
 			background-color: var(--color-light);
@@ -352,6 +378,7 @@
 			margin-bottom: 50px;
 			color: var(--color-primary);
 			position: relative;
+			font-weight: 700;
 		}
 
 		.section-title::after {
@@ -359,8 +386,9 @@
 			display: block;
 			width: 80px;
 			height: 4px;
-			background-color: var(--color-secondary);
+			background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
 			margin: 15px auto 0;
+			border-radius: 2px;
 		}
 
 		.bg-light {
@@ -368,7 +396,7 @@
 		}
 
 		.bg-accent {
-			background-color: var(--color-primary);
+			background-color: var(--color-bright-red);
 			color: var(--color-text-light);
 		}
 
@@ -377,13 +405,13 @@
 		}
 
 		.light::after {
-			background-color: var(--color-text-light);
+			background: linear-gradient(90deg, var(--color-secondary), var(--color-text-light));
 		}
 
 		/* Header */
 		header {
-			background-color: var(--color-light);
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			background: linear-gradient(135deg, var(--color-light), var(--color-gray));
+			box-shadow: 0 4px 20px var(--color-shadow);
 			position: sticky;
 			top: 0;
 			z-index: 1000;
@@ -391,105 +419,176 @@
 			justify-content: space-between;
 			align-items: center;
 			padding: 15px 5%;
+			border-bottom: 2px solid var(--color-border);
 		}
 
 		.logo-container h1 {
 			font-size: 2rem;
 			color: var(--color-primary);
 			font-weight: 700;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 		}
 
 		.logo-container span {
 			color: var(--color-secondary);
 		}
 
-		nav ul {
+		nav.main-nav {
+			display: flex;
+			align-items: center;
+		}
+
+		nav .nav-links {
 			display: flex;
 			gap: 20px;
 		}
 
 		nav a {
 			font-weight: 500;
-			transition: color 0.3s;
+			transition: all 0.3s ease;
+			position: relative;
 		}
 
 		nav a:hover {
 			color: var(--color-primary);
 		}
 
+		nav a::after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 2px;
+			bottom: -5px;
+			left: 50%;
+			background-color: var(--color-secondary);
+			transition: all 0.3s ease;
+			transform: translateX(-50%);
+		}
+
+		nav a:hover::after {
+			width: 100%;
+		}
+
 		.kontak-btn {
-			background-color: var(--color-primary);
-			color: white;
-			padding: 8px 15px;
+			background-color: var(--color-gold);
+			color: var(--color-dark);
+			padding: 10px 20px;
 			border-radius: 4px;
-			transition: background-color 0.3s;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 		}
 
 		.kontak-btn:hover {
-			background-color: #a00000;
-			color: white;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+			color: var(--color-dark);
+		}
+
+		.kontak-btn::after {
+			display: none;
+		}
+
+		/* Hamburger Menu */
+		.hamburger-menu {
+			display: none;
+			flex-direction: column;
+			cursor: pointer;
+			padding: 10px;
+			z-index: 1001;
+		}
+
+		.hamburger-menu .bar {
+			width: 25px;
+			height: 3px;
+			background-color: var(--color-primary);
+			margin: 4px 0;
+			transition: 0.4s;
+			border-radius: 2px;
 		}
 
 		/* Hero Section */
 		#hero {
-			background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080' ) no-repeat center center/cover;
+			background: linear-gradient(rgba(28, 28, 28, 0.7), rgba(139, 0, 0, 0.3)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
 			height: 80vh;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			text-align: center;
 			color: white;
+			position: relative;
+		}
+
+		#hero::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: radial-gradient(circle at center, transparent 0%, rgba(139, 0, 0, 0.2) 100%);
 		}
 
 		.hero-content {
 			max-width: 800px;
 			padding: 0 20px;
+			position: relative;
+			z-index: 2;
 		}
 
 		.hero-content h2 {
 			font-size: 3rem;
 			margin-bottom: 20px;
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+			font-weight: 700;
 		}
 
 		.hero-content p {
 			font-size: 1.2rem;
 			margin-bottom: 30px;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 		}
 
 		.hero-buttons {
 			display: flex;
 			gap: 20px;
 			justify-content: center;
+			flex-wrap: wrap;
 		}
 
-		/* Buttons */
+		/* Buttons - Square dan Kuning Emas */
 		.btn {
 			display: inline-block;
 			padding: 12px 25px;
 			border-radius: 4px;
 			font-weight: 600;
 			text-align: center;
-			transition: all 0.3s;
+			transition: all 0.3s ease;
 			cursor: pointer;
+			border: 2px solid transparent;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
 		}
 
 		.btn.primary {
-			background-color: var(--color-primary);
-			color: white;
+			background-color: var(--color-gold);
+			color: var(--color-dark);
+			box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 		}
 
 		.btn.primary:hover {
-			background-color: #a00000;
+			transform: translateY(-3px);
+			box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
 		}
 
 		.btn.secondary {
-			background-color: var(--color-secondary);
+			background-color: var(--color-gold);
 			color: var(--color-dark);
+			box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 		}
 
 		.btn.secondary:hover {
-			background-color: #e6c200;
+			transform: translateY(-3px);
+			box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
 		}
 
 		.btn.small {
@@ -511,15 +610,18 @@
 
 		.kategori-item {
 			background-color: white;
-			border-radius: 8px;
+			border-radius: 15px;
 			padding: 30px;
 			text-align: center;
-			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-			transition: transform 0.3s;
+			box-shadow: 0 8px 25px var(--color-shadow);
+			transition: all 0.3s ease;
+			border: 2px solid transparent;
 		}
 
 		.kategori-item:hover {
 			transform: translateY(-10px);
+			border-color: var(--color-border);
+			box-shadow: 0 15px 35px var(--color-shadow);
 		}
 
 		.kategori-icon {
@@ -530,6 +632,12 @@
 		.kategori-item h3 {
 			color: var(--color-primary);
 			margin-bottom: 10px;
+			font-weight: 600;
+		}
+
+		.kategori-item p {
+			color: var(--color-text);
+			font-size: 0.95rem;
 		}
 
 		/* Produk Section */
@@ -541,15 +649,23 @@
 
 		.produk-item {
 			background-color: white;
-			border-radius: 8px;
+			border-radius: 15px;
 			overflow: hidden;
-			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 8px 25px var(--color-shadow);
+			transition: all 0.3s ease;
+			border: 2px solid transparent;
+		}
+
+		.produk-item:hover {
+			transform: translateY(-10px);
+			border-color: var(--color-border);
+			box-shadow: 0 15px 35px var(--color-shadow);
 		}
 
 		.produk-image {
 			height: 200px;
 			background-color: var(--color-gray);
-			background-image: url('https://via.placeholder.com/300x200' );
+			background-image: url('https://via.placeholder.com/300x200');
 			background-size: cover;
 			background-position: center;
 		}
@@ -557,6 +673,7 @@
 		.produk-item h3 {
 			color: var(--color-primary);
 			padding: 15px 15px 5px;
+			font-weight: 600;
 		}
 
 		.produk-item p {
@@ -579,15 +696,17 @@
 		.tentang-text p {
 			margin-bottom: 20px;
 			font-size: 1.1rem;
+			text-align: justify;
 		}
 
 		.tentang-image {
 			height: 400px;
 			background-color: var(--color-gray);
-			background-image: url('https://via.placeholder.com/600x400' );
+			background-image: url('https://via.placeholder.com/600x400');
 			background-size: cover;
 			background-position: center;
-			border-radius: 8px;
+			border-radius: 15px;
+			box-shadow: 0 8px 25px var(--color-shadow);
 		}
 
 		/* FAQ Section */
@@ -598,10 +717,16 @@
 
 		.faq-item {
 			background-color: white;
-			border-radius: 8px;
+			border-radius: 15px;
 			margin-bottom: 20px;
-			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 8px 25px var(--color-shadow);
 			overflow: hidden;
+			border: 2px solid transparent;
+			transition: all 0.3s ease;
+		}
+
+		.faq-item:hover {
+			border-color: var(--color-border);
 		}
 
 		.faq-question {
@@ -616,6 +741,7 @@
 			font-size: 1.1rem;
 			color: var(--color-primary);
 			margin: 0;
+			font-weight: 600;
 		}
 
 		.faq-toggle {
@@ -658,7 +784,7 @@
 		.kontak-cta {
 			background-color: rgba(255, 255, 255, 0.1);
 			padding: 30px;
-			border-radius: 8px;
+			border-radius: 15px;
 		}
 
 		.kontak-cta h3 {
@@ -689,7 +815,7 @@
 		}
 
 		.footer-logo h2 {
-			color: var(--color-primary);
+			color: var(--color-text-light);
 			margin-bottom: 10px;
 		}
 
@@ -725,17 +851,56 @@
 		/* Responsive */
 		@media (max-width: 768px) {
 			header {
+				flex-direction: row;
+				justify-content: space-between;
+				padding: 15px 5%;
+			}
+
+			nav .nav-links {
+				display: flex;
 				flex-direction: column;
-				padding: 15px;
+				position: fixed;
+				top: 0;
+				right: 0;
+				width: 80%;
+				max-width: 300px;
+				height: 100vh;
+				background-color: var(--color-light);
+				box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+				padding: 20px 0;
+				padding-top: 70px;
+				align-items: flex-start;
+				text-align: left;
+				transition: transform 0.3s ease-in-out;
+				transform: translateX(100%);
+				z-index: 999;
+				overflow-y: auto;
 			}
 
-			.logo-container {
-				margin-bottom: 15px;
+			nav .nav-links.active {
+				transform: translateX(0);
 			}
 
-			nav ul {
-				flex-wrap: wrap;
-				justify-content: center;
+			nav .nav-links li {
+				margin: 10px 0;
+				width: 100%;
+				padding-left: 5%;
+			}
+
+			nav .nav-links a {
+				display: block;
+				padding: 10px 0;
+				color: var(--color-dark);
+			}
+
+			nav .nav-links a.kontak-btn {
+				margin: 10px 5%;
+				width: fit-content;
+			}
+
+			.hamburger-menu {
+				display: flex;
+				z-index: 1001;
 			}
 
 			.hero-content h2 {
@@ -764,6 +929,11 @@
 				height: 300px;
 				order: -1;
 			}
+
+			.kategori-grid {
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				gap: 20px;
+			}
 		}
 	</style>
 
@@ -771,11 +941,11 @@
 		// Script untuk FAQ toggle
 		document.addEventListener('DOMContentLoaded', () => {
 			const faqItems = document.querySelectorAll('.faq-item');
-			
+
 			faqItems.forEach(item => {
 				const question = item.querySelector('.faq-question');
 				const toggle = item.querySelector('.faq-toggle');
-				
+
 				question.addEventListener('click', () => {
 					// Close all other items
 					faqItems.forEach(otherItem => {
@@ -784,13 +954,31 @@
 							otherItem.querySelector('.faq-toggle').textContent = '+';
 						}
 					});
-					
+
 					// Toggle current item
 					item.classList.toggle('active');
 					toggle.textContent = item.classList.contains('active') ? '-' : '+';
+				});
+			});
+
+			// Script untuk Hamburger Menu
+			const hamburger = document.querySelector('.hamburger-menu');
+			const navLinks = document.querySelector('.nav-links');
+
+			hamburger.addEventListener('click', () => {
+				navLinks.classList.toggle('active');
+			});
+
+			// Close menu when a link is clicked (for smooth scrolling)
+			navLinks.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => {
+					if (navLinks.classList.contains('active')) {
+						navLinks.classList.remove('active');
+					}
 				});
 			});
 		});
 	</script>
 </body>
 </html>
+

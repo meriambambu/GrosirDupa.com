@@ -13,10 +13,54 @@
 </html>
 
 <style>
+	/* Global styles dengan tema Tionghoa profesional */
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		background-color: #FDF5E6; /* Old Lace - krem lembut */
+		color: #2F2F2F; /* Abu-abu gelap untuk teks */
+		line-height: 1.6;
+	}
+
+	/* Smooth scrolling untuk semua elemen */
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* Custom scrollbar dengan tema Tionghoa */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #F5F5DC; /* Beige */
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: linear-gradient(135deg, #8B0000, #DAA520); /* Gradient merah-emas */
+		border-radius: 4px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: linear-gradient(135deg, #A00000, #FFD700);
+	}
+
+	/* Selection color */
+	::selection {
+		background-color: #DAA520; /* Emas */
+		color: #FFFFFF;
+	}
+
+	::-moz-selection {
+		background-color: #DAA520;
+		color: #FFFFFF;
 	}
 </style>
+

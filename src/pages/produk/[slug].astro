@@ -1,0 +1,551 @@
+---
+// src/pages/produk/[slug].astro
+// Ini adalah template untuk halaman detail produk.
+// Data produk di sini masih placeholder dan akan diganti dengan data dari CMS nanti.
+
+// Fungsi getStaticPaths() untuk memberitahu Astro rute mana yang harus dibuat
+export async function getStaticPaths() {
+    // Pindahkan definisi productData ke dalam fungsi getStaticPaths
+    const productData = {
+        'dupa-wangi-premium': {
+            name: 'Dupa Wangi Premium',
+            description: 'Dupa wangi kualitas terbaik dengan aroma menenangkan, cocok untuk sembahyang harian dan acara khusus. Terbuat dari bahan alami pilihan.',
+            price: 'Rp 150.000 / dus',
+            box_content: '1 dus isi 24 pack',
+            min_order: 'Minimal pemesanan 1 dus',
+            images: [
+                'https://via.placeholder.com/600x400/C00000/FFFFFF?text=Dupa+Wangi+Premium+1',
+                'https://via.placeholder.com/600x400/FFD700/333333?text=Dupa+Wangi+Premium+2',
+                'https://via.placeholder.com/600x400/C00000/FFFFFF?text=Dupa+Wangi+Premium+3'
+            ],
+            video_link: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Contoh link YouTube
+        },
+        'lilin-merah-besar': {
+            name: 'Lilin Merah Besar',
+            description: 'Lilin sembahyang merah ukuran besar, cocok untuk penerangan altar dan persembahan. Nyala tahan lama dan tidak berasap.',
+            price: 'Rp 200.000 / dus',
+            box_content: '1 dus isi 20 pasang',
+            min_order: 'Minimal pemesanan 1/2 dus',
+            images: [
+                'https://via.placeholder.com/600x400/C00000/FFFFFF?text=Lilin+Merah+Besar+1',
+                'https://via.placeholder.com/600x400/FFD700/333333?text=Lilin+Merah+Besar+2'
+            ],
+            video_link: ''
+        },
+        'kertas-sembahyang-naga': {
+            name: 'Kertas Sembahyang Motif Naga',
+            description: 'Kertas sembahyang dengan motif naga yang indah, cocok untuk berbagai upacara. Kualitas premium, tidak mudah sobek.',
+            price: 'Rp 120.000 / dus',
+            box_content: '1 dus isi 50 pack',
+            min_order: 'Minimal pemesanan 1 dus',
+            images: [
+                'https://via.placeholder.com/600x400/C00000/FFFFFF?text=Kertas+Naga+1',
+                'https://via.placeholder.com/600x400/FFD700/333333?text=Kertas+Naga+2'
+            ],
+            video_link: ''
+        }
+    };
+
+    return Object.keys(productData ).map((slug) => ({
+        params: { slug },
+        props: { product: productData[slug] }, // Mengirim data produk sebagai props
+    }));
+}
+
+// Ambil data produk dari props yang dikirim oleh getStaticPaths
+const { product } = Astro.props;
+
+// Jika produk tidak ditemukan (ini seharusnya tidak terjadi jika getStaticPaths sudah benar)
+if (!product) {
+    // Untuk pengembangan, kita bisa log error atau menampilkan pesan
+    console.error(`Produk dengan slug '${Astro.params.slug}' tidak ditemukan.`);
+    // Atau redirect ke halaman 404
+    // return Astro.redirect('/404');
+    // Untuk saat ini, kita bisa mengembalikan respons kosong atau error agar tidak crash
+    // Ini hanya untuk debugging, tidak untuk produksi
+    return new Response('Produk tidak ditemukan', { status: 404 });
+}
+---
+
+<html lang="id">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{product.name} - GrosirDupa.com</title>
+	<meta name="description" content={product.description} />
+</head>
+<body>
+	<header>
+		<div class="logo-container">
+			<h1>GrosirDupa<span>.com</span></h1>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="/">Beranda</a></li>
+				<li><a href="/kategori">Kategori</a></li>
+				<li><a href="/#produk-unggulan">Produk Unggulan</a></li>
+				<li><a href="/#tentang-kami">Tentang Kami</a></li>
+				<li><a href="/#faq">FAQ</a></li>
+				<li><a href="/#kontak" class="kontak-btn">Hubungi Kami</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section id="product-detail" class="section">
+			<div class="container">
+				<div class="product-content">
+					<div class="product-gallery">
+						{product.images.length > 0 ? (
+							<div class="main-image">
+								<img src={product.images[0]} alt={product.name} />
+							</div>
+						) : (
+							<div class="main-image placeholder"></div>
+						)}
+						<div class="thumbnail-images">
+							{product.images.map((img, index) => (
+								<img src={img} alt={`${product.name} - ${index + 1}`} class="thumbnail" />
+							))}
+						</div>
+						{product.video_link && (
+							<div class="product-video">
+								<h3>Video Produk</h3>
+								<iframe
+									width="100%"
+									height="315"
+									src={product.video_link}
+									frameborder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen>
+								</iframe>
+							</div>
+						)}
+					</div>
+					<div class="product-info">
+						<h1 class="product-title">{product.name}</h1>
+						<p class="product-price">{product.price}</p>
+						<p class="product-description">{product.description}</p>
+						<div class="product-specs">
+							{product.box_content && <p><strong>Isi per dus:</strong> {product.box_content}</p>}
+							{product.min_order && <p><strong>Minimum Pemesanan:</strong> {product.min_order}</p>}
+						</div>
+						<a href={`https://wa.me/6282223399668?text=Halo,%20saya%20tertarik%20dengan%20produk%20${encodeURIComponent(product.name )}%20di%20GrosirDupa.com.%20Mohon%20informasi%20lebih%20lanjut.`} class="btn primary large" target="_blank">
+							<span class="whatsapp-icon"></span> Chat Admin via WhatsApp
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<div class="footer-content">
+				<div class="footer-logo">
+					<h2>GrosirDupa<span>.com</span></h2>
+					<p>Pusat Grosir Perlengkapan Sembahyang</p>
+				</div>
+				<div class="footer-links">
+					<h3>Tautan</h3>
+					<ul>
+						<li><a href="/">Beranda</a></li>
+						<li><a href="/kategori">Kategori</a></li>
+						<li><a href="/#produk-unggulan">Produk Unggulan</a></li>
+						<li><a href="/#tentang-kami">Tentang Kami</a></li>
+						<li><a href="/#faq">FAQ</a></li>
+						<li><a href="/#kontak">Kontak</a></li>
+					</ul>
+				</div>
+				<div class="footer-contact">
+					<h3>Kontak</h3>
+					<p>WhatsApp: 082223399668</p>
+					<p>Email: inquiry@grosirdupa.com</p>
+					<p>Alamat: Ruko Taman Palem Lestari Blok C5/1A, Cengkareng Barat, Jakarta</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; 2025 GrosirDupa.com. Hak Cipta Dilindungi.</p>
+			</div>
+		</div>
+	</footer>
+
+	<style>
+		/* Variabel warna */
+		:root {
+			--color-primary: #c00000; /* Merah */
+			--color-secondary: #ffd700; /* Emas */
+			--color-dark: #333333;
+			--color-light: #f9f9f9;
+			--color-gray: #e0e0e0;
+			--color-text: #333333;
+			--color-text-light: #ffffff;
+			--font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		/* Reset dan Base */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: var(--font-main);
+			color: var(--color-text);
+			line-height: 1.6;
+			background-color: var(--color-light);
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		.container {
+			width: 90%;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.section {
+			padding: 80px 0;
+		}
+
+		.section-title {
+			font-size: 2.5rem;
+			text-align: center;
+			margin-bottom: 50px;
+			color: var(--color-primary);
+			position: relative;
+		}
+
+		.section-title::after {
+			content: '';
+			display: block;
+			width: 80px;
+			height: 4px;
+			background-color: var(--color-secondary);
+			margin: 15px auto 0;
+		}
+
+		.bg-light {
+			background-color: var(--color-gray);
+		}
+
+		.bg-accent {
+			background-color: var(--color-primary);
+			color: var(--color-text-light);
+		}
+
+		.light {
+			color: var(--color-text-light);
+		}
+
+		.light::after {
+			background-color: var(--color-text-light);
+		}
+
+		/* Header */
+		header {
+			background-color: var(--color-light);
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 15px 5%;
+		}
+
+		.logo-container h1 {
+			font-size: 2rem;
+			color: var(--color-primary);
+			font-weight: 700;
+		}
+
+		.logo-container span {
+			color: var(--color-secondary);
+		}
+
+		nav ul {
+			display: flex;
+			gap: 20px;
+		}
+
+		nav a {
+			font-weight: 500;
+			transition: color 0.3s;
+		}
+
+		nav a:hover {
+			color: var(--color-primary);
+		}
+
+		.kontak-btn {
+			background-color: var(--color-primary);
+			color: white;
+			padding: 8px 15px;
+			border-radius: 4px;
+			transition: background-color 0.3s;
+		}
+
+		.kontak-btn:hover {
+			background-color: #a00000;
+			color: white;
+		}
+
+		/* Product Detail Section */
+		.product-content {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+			align-items: flex-start;
+		}
+
+		.product-gallery {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+
+		.main-image {
+			border: 1px solid var(--color-gray);
+			border-radius: 8px;
+			overflow: hidden;
+		}
+
+		.main-image img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+
+		.main-image.placeholder {
+			background-color: var(--color-gray);
+			height: 400px; /* Placeholder height */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: var(--color-dark);
+			font-size: 1.5rem;
+		}
+
+		.thumbnail-images {
+			display: flex;
+			gap: 10px;
+			overflow-x: auto;
+			padding-bottom: 10px; /* For scrollbar */
+		}
+
+		.thumbnail-images img {
+			width: 100px;
+			height: 75px;
+			object-fit: cover;
+			border: 1px solid var(--color-gray);
+			border-radius: 4px;
+			cursor: pointer;
+			transition: border-color 0.3s;
+		}
+
+		.thumbnail-images img:hover,
+		.thumbnail-images img.active {
+			border-color: var(--color-primary);
+		}
+
+		.product-video {
+			margin-top: 20px;
+		}
+
+		.product-video h3 {
+			margin-bottom: 10px;
+			color: var(--color-primary);
+		}
+
+		.product-info {
+			padding-top: 20px;
+		}
+
+		.product-title {
+			font-size: 2.5rem;
+			color: var(--color-primary);
+			margin-bottom: 15px;
+		}
+
+		.product-price {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: var(--color-secondary);
+			margin-bottom: 20px;
+		}
+
+		.product-description {
+			font-size: 1.1rem;
+			margin-bottom: 25px;
+		}
+
+		.product-specs p {
+			margin-bottom: 10px;
+			font-size: 1rem;
+		}
+
+		.product-specs strong {
+			color: var(--color-primary);
+		}
+
+		.btn {
+			display: inline-flex; /* Use flex for icon alignment */
+			align-items: center;
+			justify-content: center;
+			padding: 12px 25px;
+			border-radius: 4px;
+			font-weight: 600;
+			text-align: center;
+			transition: all 0.3s;
+			cursor: pointer;
+			margin-top: 30px;
+		}
+
+		.btn.primary {
+			background-color: var(--color-primary);
+			color: white;
+		}
+
+		.btn.primary:hover {
+			background-color: #a00000;
+		}
+
+		.btn.large {
+			padding: 15px 30px;
+			font-size: 1.1rem;
+		}
+
+		.whatsapp-icon {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12.04 2.04c-5.46 0-9.9 4.44-9.9 9.9 0 1.77.46 3.45 1.26 4.95l-1.3 4.75 4.8-1.26c1.45.79 3.09 1.2 4.79 1.2 5.46 0 9.9-4.44 9.9-9.9s-4.44-9.9-9.9-9.9zm.04 17.97c-1.5 0-2.93-.4-4.19-1.15l-.3-.18-3.15.83.84-3.06-.2-.32c-.78-1.26-1.2-2.7-1.2-4.22 0-4.6 3.74-8.34 8.34-8.34 2.23 0 4.33.87 5.91 2.45s2.45 3.68 2.45 5.91c0 4.6-3.74 8.34-8.34 8.34zm3.6-6.86c-.19-.1-.69-.34-.8-.38-.1-.04-.19-.04-.27.04-.09.1-.34.38-.42.46-.09.1-.17.1-.34.04-.17-.04-.7-.26-1.33-.82-.49-.44-.82-1-1.09-1.45-.26-.46-.03-.42.06-.51.08-.09.19-.23.27-.34.09-.1.1-.19.04-.27-.04-.09-.27-.69-.38-.93-.1-.23-.19-.19-.27-.19-.09 0-.19-.04-.27-.04-.09 0-.23.04-.34.14-.1.1-.38.38-.38.93s.39 1.08.44 1.15c.06.08.76 1.15 1.84 1.6.27.1.49.17.66.23.27.09.51.08.7.06.19-.04.59-.24.66-.46.08-.23.08-.42.06-.46-.03-.09-.1-.14-.19-.19z"/></svg>' );
+			background-size: contain;
+			background-repeat: no-repeat;
+			margin-right: 10px;
+		}
+
+		/* Footer */
+		footer {
+			background-color: var(--color-dark);
+			color: white;
+			padding: 60px 0 20px;
+		}
+
+		.footer-content {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 40px;
+			margin-bottom: 40px;
+		}
+
+		.footer-logo h2 {
+			color: var(--color-primary);
+			margin-bottom: 10px;
+		}
+
+		.footer-logo span {
+			color: var(--color-secondary);
+		}
+
+		.footer-links h3,
+		.footer-contact h3 {
+			color: var(--color-secondary);
+			margin-bottom: 15px;
+			font-size: 1.2rem;
+		}
+
+		.footer-links ul li {
+			margin-bottom: 10px;
+		}
+
+		.footer-links a:hover {
+			color: var(--color-secondary);
+		}
+
+		.footer-contact p {
+			margin-bottom: 10px;
+		}
+
+		.footer-bottom {
+			text-align: center;
+			padding-top: 20px;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			header {
+				flex-direction: column;
+				padding: 15px;
+			}
+
+			.logo-container {
+				margin-bottom: 15px;
+			}
+
+			nav ul {
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.section {
+				padding: 60px 0;
+			}
+
+			.product-content {
+				grid-template-columns: 1fr;
+			}
+
+			.product-title {
+				font-size: 2rem;
+			}
+
+			.product-price {
+				font-size: 1.5rem;
+			}
+		}
+	</style>
+
+	<script>
+		// Script untuk mengganti gambar utama saat thumbnail diklik
+		document.addEventListener('DOMContentLoaded', () => {
+			const mainImage = document.querySelector('.main-image img');
+			const thumbnails = document.querySelectorAll('.thumbnail-images .thumbnail');
+
+			if (mainImage && thumbnails.length > 0) {
+				thumbnails.forEach(thumbnail => {
+					thumbnail.addEventListener('click', () => {
+						mainImage.src = thumbnail.src;
+						thumbnails.forEach(t => t.classList.remove('active'));
+						thumbnail.classList.add('active');
+					});
+				});
+				// Set the first thumbnail as active by default
+				thumbnails[0].classList.add('active');
+			}
+		});
+	</script>
+</body>
+</html>
