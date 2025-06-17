@@ -1,5 +1,5 @@
 ---
-// src/pages/kategori.astro
+// src/pages/katalog.astro
 ---
 
 <html lang="id">
@@ -8,8 +8,8 @@
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="generator" content={Astro.generator} />
-	<title>Kategori Produk - GrosirDupa.com</title>
-	<meta name="description" content="Jelajahi berbagai kategori produk perlengkapan sembahyang terlengkap di GrosirDupa.com: dupa, lilin, kertas sembahyang, lampu altar, rupang/patung dewa, dan lainnya." />
+	<title>Katalog Produk - GrosirDupa.com</title>
+	<meta name="description" content="Jelajahi berbagai katalog produk perlengkapan sembahyang terlengkap di GrosirDupa.com: dupa, lilin, kertas sembahyang, lampu altar, rupang/patung dewa, dan lainnya." />
 </head>
 <body>
 	<header>
@@ -19,7 +19,9 @@
 		<nav class="main-nav">
 			<ul class="nav-links">
 				<li><a href="/">Beranda</a></li>
-				<li><a href="/kategori">Kategori</a></li>
+				<li><a href="/katalog">Katalog</a></li>
+				<li><a href="/promo">Promo</a></li>
+				<li><a href="/kerja-sama">Kerja Sama</a></li>
 				<li><a href="/#produk-unggulan">Produk Unggulan</a></li>
 				<li><a href="/#tentang-kami">Tentang Kami</a></li>
 				<li><a href="/#faq">FAQ</a></li>
@@ -34,51 +36,51 @@
 	</header>
 
 	<main>
-		<section id="kategori-page" class="section">
+		<section id="katalog-page" class="section">
 			<div class="container">
-				<h2 class="section-title">Semua Kategori Produk</h2>
+				<h2 class="section-title">Semua Katalog Produk</h2>
 				<div class="kategori-grid">
-					<a href="/kategori/dupa" class="kategori-item">
+					<a href="/katalog/dupa" class="kategori-item">
 						<div class="kategori-icon">🕯️</div>
 						<h3>Dupa</h3>
 						<p>Berbagai jenis dupa berkualitas tinggi untuk sembahyang.</p>
 					</a>
-					<a href="/kategori/lilin" class="kategori-item">
+					<a href="/katalog/lilin" class="kategori-item">
 						<div class="kategori-icon">🔥</div>
 						<h3>Lilin</h3>
 						<p>Lilin sembahyang berbagai ukuran dan warna.</p>
 					</a>
-					<a href="/kategori/kertas-sembahyang" class="kategori-item">
+					<a href="/katalog/kertas-sembahyang" class="kategori-item">
 						<div class="kategori-icon">📜</div>
 						<h3>Kertas Sembahyang</h3>
 						<p>Kertas sembahyang dengan beragam motif dan fungsi.</p>
 					</a>
-					<a href="/kategori/lampu-altar" class="kategori-item">
+					<a href="/katalog/lampu-altar" class="kategori-item">
 						<div class="kategori-icon">💡</div>
 						<h3>Lampu Altar</h3>
 						<p>Lampu altar tradisional dan modern untuk penerangan.</p>
 					</a>
-					<a href="/kategori/rupang-patung" class="kategori-item">
+					<a href="/katalog/rupang-patung" class="kategori-item">
 						<div class="kategori-icon">🏯</div>
 						<h3>Rupang/Patung</h3>
 						<p>Patung dewa dan rupang berbagai ukuran dan bahan.</p>
 					</a>
-					<a href="/kategori/minyak-sembahyang" class="kategori-item">
+					<a href="/katalog/minyak-sembahyang" class="kategori-item">
 						<div class="kategori-icon">🛢️</div>
 						<h3>Minyak Sembahyang</h3>
 						<p>Minyak sembahyang berkualitas premium untuk ritual.</p>
 					</a>
-					<a href="/kategori/dupa-lingkar-tempat-bakar" class="kategori-item">
+					<a href="/katalog/dupa-lingkar-tempat-bakar" class="kategori-item">
 						<div class="kategori-icon">🔥</div>
 						<h3>Dupa Lingkar & Tempat Bakar</h3>
 						<p>Dupa lingkar dan tempat bakar dupa yang aman.</p>
 					</a>
-					<a href="/kategori/cangkir-piring-buah" class="kategori-item">
+					<a href="/katalog/cangkir-piring-buah" class="kategori-item">
 						<div class="kategori-icon">🍎</div>
 						<h3>Cangkir & Piring Buah</h3>
 						<p>Cangkir dan piring buah untuk persembahan ritual.</p>
 					</a>
-					<a href="/kategori/perlengkapan-lainnya" class="kategori-item">
+					<a href="/katalog/perlengkapan-lainnya" class="kategori-item">
 						<div class="kategori-icon">🧧</div>
 						<h3>Perlengkapan Lainnya</h3>
 						<p>Berbagai perlengkapan sembahyang pelengkap lainnya.</p>
@@ -99,7 +101,9 @@
 					<h3>Tautan</h3>
 					<ul>
 						<li><a href="/">Beranda</a></li>
-						<li><a href="/kategori">Kategori</a></li>
+						<li><a href="/katalog">Katalog</a></li>
+						<li><a href="/promo">Promo</a></li>
+						<li><a href="/kerja-sama">Kerja Sama</a></li>
 						<li><a href="/#produk-unggulan">Produk Unggulan</a></li>
 						<li><a href="/#tentang-kami">Tentang Kami</a></li>
 						<li><a href="/#faq">FAQ</a></li>
@@ -445,13 +449,25 @@
 
 			nav .nav-links a {
 				display: block;
-				padding: 10px 0;
+				padding: 15px 0;
 				color: var(--color-dark);
+				font-size: 1.1rem;
 			}
 
 			nav .nav-links a.kontak-btn {
 				margin: 10px 5%;
 				width: fit-content;
+				background-color: transparent;
+				color: var(--color-dark);
+				box-shadow: none;
+				border-radius: 0;
+			}
+
+			nav .nav-links a.kontak-btn:hover {
+				background-color: transparent;
+				color: var(--color-primary);
+				transform: none;
+				box-shadow: none;
 			}
 
 			.hamburger-menu {
@@ -468,7 +484,7 @@
 			}
 
 			.kategori-grid {
-				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				grid-template-columns: repeat(2, 1fr);
 				gap: 20px;
 			}
 		}

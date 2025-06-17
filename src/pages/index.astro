@@ -84,7 +84,9 @@
 		<nav class="main-nav">
 			<ul class="nav-links">
 				<li><a href="#beranda">Beranda</a></li>
-				<li><a href="/kategori">Kategori</a></li>
+				<li><a href="/katalog">Katalog</a></li>
+				<li><a href="/promo">Promo</a></li>
+				<li><a href="/kerja-sama">Kerja Sama</a></li>
 				<li><a href="#produk-unggulan">Produk Unggulan</a></li>
 				<li><a href="#tentang-kami">Tentang Kami</a></li>
 				<li><a href="#faq">FAQ</a></li>
@@ -104,15 +106,15 @@
 				<h2>Pusat Grosir Perlengkapan Sembahyang Terlengkap</h2>
 				<p>Menyediakan berbagai kebutuhan sembahyang berkualitas dengan harga grosir terbaik</p>
 				<div class="hero-buttons">
-					<a href="#kategori" class="btn primary">Lihat Kategori</a>
+					<a href="#katalog" class="btn primary">Lihat Katalog</a>
 					<a href="#kontak" class="btn secondary">Hubungi Kami</a>
 				</div>
 			</div>
 		</section>
 
-		<section id="kategori" class="section">
+		<section id="katalog" class="section">
 			<div class="container">
-				<h2 class="section-title">Kategori Produk</h2>
+				<h2 class="section-title">Katalog Produk</h2>
 				<div class="kategori-grid">
 					<div class="kategori-item">
 						<div class="kategori-icon">🕯️</div>
@@ -292,7 +294,9 @@
 					<h3>Tautan</h3>
 					<ul>
 						<li><a href="/">Beranda</a></li>
-						<li><a href="/kategori">Kategori</a></li>
+						<li><a href="/katalog">Katalog</a></li>
+						<li><a href="/promo">Promo</a></li>
+						<li><a href="/kerja-sama">Kerja Sama</a></li>
 						<li><a href="#produk-unggulan">Produk Unggulan</a></li>
 						<li><a href="#tentang-kami">Tentang Kami</a></li>
 						<li><a href="#faq">FAQ</a></li>
@@ -889,13 +893,25 @@
 
 			nav .nav-links a {
 				display: block;
-				padding: 10px 0;
+				padding: 15px 0;
 				color: var(--color-dark);
+				font-size: 1.1rem;
 			}
 
 			nav .nav-links a.kontak-btn {
 				margin: 10px 5%;
 				width: fit-content;
+				background-color: transparent;
+				color: var(--color-dark);
+				box-shadow: none;
+				border-radius: 0;
+			}
+
+			nav .nav-links a.kontak-btn:hover {
+				background-color: transparent;
+				color: var(--color-primary);
+				transform: none;
+				box-shadow: none;
 			}
 
 			.hamburger-menu {
@@ -931,7 +947,7 @@
 			}
 
 			.kategori-grid {
-				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				grid-template-columns: repeat(2, 1fr);
 				gap: 20px;
 			}
 		}
